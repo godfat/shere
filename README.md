@@ -9,7 +9,14 @@ by Lin Jen-Shin ([godfat](http://godfat.org))
 
 ## DESCRIPTION:
 
+_Share_ the directory _here_ with [Nginx][]!
+
+[Nginx]: http://nginx.org/
+
 ## REQUIREMENTS:
+
+* Any Ruby 1.8+
+* [Nginx][]
 
 ## INSTALLATION:
 
@@ -17,7 +24,7 @@ by Lin Jen-Shin ([godfat](http://godfat.org))
 
 ## SYNOPSIS:
 
-    shere static
+    shere
 
 ## LICENSE:
 
