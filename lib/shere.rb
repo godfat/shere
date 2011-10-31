@@ -70,7 +70,7 @@ http {
     gzip                         on;
     gzip_min_length              1100;
     gzip_buffers                 4 8k;
-    gzip_types                   text/plain text/html text/css application/xhtml+xml application/javascript;
+    gzip_types                   text/plain text/css application/xhtml+xml application/javascript;
 
     server {
         listen                   4331;
