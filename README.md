@@ -25,6 +25,8 @@ _Share_ the directory _here_ with [Nginx][]!
 ## SYNOPSIS:
 
     shere
+    shere --help
+    shere -p 8080 ~/public
 
 ## LICENSE:
 
