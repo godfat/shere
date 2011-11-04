@@ -5,11 +5,12 @@ module Shere
     root = File.expand_path(opts[:root] || '.')
     port = opts[:port] || 4331
     host = opts[:host] || '_'
+    user = opts[:user]
 
     require 'tmpdir'
     tmpdir = Dir.mktmpdir
     File.open("#{tmpdir}/nginx.conf", 'w'){ |conf|
-      conf.puts(nginx_config(root, port, host, tmpdir))
+      conf.puts(nginx_config(root, port, host, user, tmpdir))
     }
     sh('nginx', '-c', "#{tmpdir}/nginx.conf")
     puts("PID: #{File.read("#{tmpdir}/nginx.pid")}")
@@ -21,14 +22,29 @@ module Shere
     Socket.getaddrinfo(Socket.gethostname, 'echo', Socket::AF_INET)[0][3]
   end
 
+  def root_privilege?
+    require 'etc'
+    Etc.getpwuid(Process.uid).name == 'root'
+  end
+
   def sh *commands
     puts commands.join(' ')
     system(*commands)
   end
 
-  def nginx_config root, port, host, tmpdir=Dir.mktmpdir
+  def nginx_config root, port, host, user, tmpdir=Dir.mktmpdir
+    if user
+      if root_privilege?
+        "user  #{user};\n"
+      else
+        puts "\e[31m[WARN] Since you don't have root privilege,"
+        puts "       switching user to `#{user}' is not possible.\e[0m"
+        ''
+      end
+    else
+      ''
+    end +
 <<-NGINX
-# user            nobody;
 worker_processes  2;
 
 error_log         #{tmpdir}/nginx_error.log;

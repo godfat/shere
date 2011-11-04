@@ -27,6 +27,7 @@ _Share_ the directory _here_ with [Nginx][]!
     shere
     shere --help
     shere -p 8080 ~/public
+    sudo shere -u nobody
 
 ## LICENSE:
 

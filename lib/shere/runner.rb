@@ -6,6 +6,8 @@ module Shere::Runner
     @options ||=
     [['-p, --port PORT', 'Which port Nginx should listen on (default 4331)'],
      ['-h, --host HOST', 'Which host Nginx should use       (default _)'   ],
+     ['-u, --user USER', 'Which user Nginx should use' \
+                                              ' (if having root privilege)'],
      ['    --help'     , 'Print this message'                              ],
      ['-v, --version'  , 'Print the version'                               ]]
   end
@@ -25,6 +27,9 @@ module Shere::Runner
 
       when /^-h=?(.+)?/, /^--host=?(.+)?/
         opts[:host] = $1 || argv.shift
+
+      when /^-u=?(.+)?/, /^--user=?(.+)?/
+        opts[:user] = $1 || argv.shift
 
       when '--help'
         puts(help)
