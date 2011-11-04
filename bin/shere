@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
-require 'shere'
-Shere.run(ARGV.first || '.')
+require 'shere/runner'
+Shere::Runner.run(ARGV.dup)

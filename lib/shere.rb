@@ -1,15 +1,19 @@
 
 module Shere
   module_function
-  def run root
+  def run opts={}
+    root = File.expand_path(opts[:root] || '.')
+    port = opts[:port] || 4331
+    host = opts[:host] || '_'
+
     require 'tmpdir'
     tmpdir = Dir.mktmpdir
     File.open("#{tmpdir}/nginx.conf", 'w'){ |conf|
-      conf.puts(nginx_config(File.expand_path(root), tmpdir))
+      conf.puts(nginx_config(root, port, host, tmpdir))
     }
     sh('nginx', '-c', "#{tmpdir}/nginx.conf")
     puts("PID: #{File.read("#{tmpdir}/nginx.pid")}")
-    puts("http://#{local_ip}:4331")
+    puts("http://#{local_ip}:#{port}")
   end
 
   def local_ip
@@ -22,7 +26,7 @@ module Shere
     system(*commands)
   end
 
-  def nginx_config root, tmpdir=Dir.mktmpdir
+  def nginx_config root, port, host, tmpdir=Dir.mktmpdir
 <<-NGINX
 # user            nobody;
 worker_processes  2;
@@ -73,8 +77,8 @@ http {
     gzip_types                   text/plain text/css application/xhtml+xml application/javascript;
 
     server {
-        listen                   4331;
-        server_name              _;
+        listen                   #{port};
+        server_name              #{host};
         index                    index.xhtml index.html index.htm;
 
         location / {
