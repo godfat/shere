@@ -10,8 +10,8 @@ by Lin Jen-Shin ([godfat](http://godfat.org))
 ## DESCRIPTION:
 
 _Share_ the directory _here_ with [Nginx][]!
-
-[Nginx]: http://nginx.org/
+Shere would create a temporary Nginx config and run an
+Nginx instance to serve the directory you specified.
 
 ## REQUIREMENTS:
 
@@ -28,6 +28,8 @@ _Share_ the directory _here_ with [Nginx][]!
     shere --help
     shere -p 8080 ~/public
     sudo shere -u nobody
+
+[Nginx]: http://nginx.org/
 
 ## LICENSE:
 

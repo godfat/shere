@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Lin Jen-Shin (godfat)"]
-  s.date = "2011-11-04"
-  s.description = "_Share_ the directory _here_ with [Nginx][]!\n\n[Nginx]: http://nginx.org/"
+  s.date = "2011-11-05"
+  s.description = "_Share_ the directory _here_ with [Nginx][]!\nShere would create a temporary Nginx config and run an\nNginx instance to serve the directory you specified."
   s.email = ["godfat (XD) godfat.org"]
   s.executables = ["shere"]
   s.files = [
