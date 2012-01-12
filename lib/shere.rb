@@ -98,7 +98,7 @@ http {
         index                    index.xhtml index.html index.htm;
 
         location / {
-          root                   #{root};
+          root                   "#{root}";
           autoindex              on;
         }
     }

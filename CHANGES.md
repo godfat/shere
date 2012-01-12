@@ -1,5 +1,9 @@
 # CHANGES
 
+## shere 0.9.2 -- 2012-01-13
+
+Fixed a bug where root path is not quoted.
+
 ## shere 0.9.1 -- 2011-12-28
 
 Now `-h` is the alias of `--help`, and `-o` is the alias of `--host`.
