@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+# stub: shere 0.9.2 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "shere"
@@ -6,7 +7,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Lin Jen-Shin (godfat)"]
-  s.date = "2012-01-13"
+  s.date = "2013-09-28"
   s.description = "_Share_ the directory _here_ with [Nginx][]!\nShere would create a temporary Nginx config and run an\nNginx instance to serve the directory you specified."
   s.email = ["godfat (XD) godfat.org"]
   s.executables = ["shere"]
@@ -27,16 +28,8 @@ Gem::Specification.new do |s|
   "task/.gitignore",
   "task/gemgem.rb"]
   s.homepage = "https://github.com/godfat/shere"
+  s.licenses = ["Apache License 2.0"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.15"
+  s.rubygems_version = "2.1.5"
   s.summary = "_Share_ the directory _here_ with [Nginx][]!"
-
-  if s.respond_to? :specification_version then
-    s.specification_version = 3
-
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-    else
-    end
-  else
-  end
 end
