@@ -8,7 +8,7 @@ module Shere
     user = opts[:user]
 
     require 'tmpdir'
-    tmpdir = Dir.mktmpdir
+    tmpdir = Dir.mktmpdir('shere-')
     File.open("#{tmpdir}/nginx.conf", 'w'){ |conf|
       conf.puts(nginx_config(root, port, host, user, tmpdir))
     }
