@@ -1,5 +1,30 @@
 
+require 'socket'
+
 module Shere
+  class ExternalAddress < Struct.new(:address)
+    def initialize
+      super(external_address)
+    end
+
+    def ip_address
+      address.ip_address
+    end
+
+    def reverse_lookup_host
+      Socket.getaddrinfo(
+        ip_address, 0, Socket::AF_UNSPEC, Socket::SOCK_STREAM, nil,
+        Socket::AI_CANONNAME, true).dig(0, 2)
+    end
+
+    private
+    def external_address
+      Socket.ip_address_list.find do |addr|
+        addr.ipv4? && !addr.ipv4_loopback? && !addr.ipv4_private?
+      end
+    end
+  end
+
   module_function
   def run opts={}
     root = File.expand_path(opts[:root] || '.')
@@ -14,12 +39,11 @@ module Shere
     }
     sh('nginx', '-c', "#{tmpdir}/nginx.conf")
     puts("PID: #{File.read("#{tmpdir}/nginx.pid")}")
-    puts("http://#{local_ip}:#{port}")
-  end
 
-  def local_ip
-    require 'socket'
-    Socket.getaddrinfo(Socket.gethostname, 'echo', Socket::AF_INET)[0][3]
+    address = ExternalAddress.new
+
+    puts("http://#{address.ip_address}:#{port}" \
+         " or http://#{address.reverse_lookup_host}:#{port}")
   end
 
   def root_privilege?
