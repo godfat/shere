@@ -33,7 +33,7 @@ Nginx instance to serve the directory you specified.
 
 ## LICENSE:
 
-Apache License 2.0
+Apache License 2.0 (Apache-2.0)
 
 Copyright (c) 2011~2018, Lin Jen-Shin (godfat)
 

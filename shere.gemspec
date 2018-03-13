@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
   "task/README.md".freeze,
   "task/gemgem.rb".freeze]
   s.homepage = "https://github.com/godfat/shere".freeze
-  s.licenses = ["Apache License 2.0".freeze]
+  s.licenses = ["Apache-2.0".freeze]
   s.rubygems_version = "2.7.6".freeze
   s.summary = "_Share_ the directory _here_ with [Nginx][]!".freeze
 end

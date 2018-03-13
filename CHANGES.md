@@ -1,5 +1,10 @@
 # CHANGES
 
+## shere 1.0.0 -- ?
+
+* Also try to reverse lookup and show hostname
+* Prefix shere- for the temporary directory
+
 ## shere 0.9.2 -- 2012-01-13
 
 Fixed a bug where root path is not quoted.
