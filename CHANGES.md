@@ -1,6 +1,6 @@
 # CHANGES
 
-## shere 1.0.0 -- ?
+## shere 1.0.0 -- 2018-03-14
 
 * Also try to reverse lookup and show hostname
 * Prefix shere- for the temporary directory
